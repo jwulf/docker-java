@@ -34,6 +34,7 @@ RUN apk add --update curl ca-certificates && \
     rm /jre/bin/servertool && \
     rm /jre/bin/tnameserv && \
     rm /jre/bin/unpack200 && \
+    rm /jre/lib/ext/nashorn.jar && \
     rm /jre/lib/jfr.jar && \
     rm -rf /jre/lib/jfr && \
     rm -rf /jre/lib/oblique-fonts && \
