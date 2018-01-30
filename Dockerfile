@@ -13,6 +13,9 @@ ENV JAVA_VERSION_MAJOR=8  \
 COPY glibc-2.21-r2.apk /tmp/glibc-2.21-r2.apk
 COPY glibc-bin-2.21-r2.apk /tmp/glibc-bin-2.21-r2.apk
 RUN apk add --update curl ca-certificates && \
+    mkdir -p /aws && \
+    apk -Uuv add groff less python py-pip && \
+    pip install awscli && \
     cd /tmp && \
     apk add --allow-untrusted \
         glibc-2.21-r2.apk \
@@ -37,6 +40,7 @@ RUN apk add --update curl ca-certificates && \
     rm /jre/lib/jfr.jar && \
     rm -rf /jre/lib/jfr && \
     rm -rf /jre/lib/oblique-fonts && \
-    rm -rf /tmp/* /var/cache/apk/*
+    apk --purge -v del py-pip && \
+    rm -rf /tmp/* /var/cache/apk/* 
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/urandom"]
