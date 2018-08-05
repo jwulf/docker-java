@@ -21,10 +21,10 @@ RUN apk add --update curl ca-certificates && \
     /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-i586.tar.gz" \
+        "https://sitapatis-sydney-storage.s3.amazonaws.com/xfer/jre.tar.gz" \
         | gunzip -c - | tar -xf - && \
     apk del curl ca-certificates && \
-    mv jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR}/jre /jre && \
+    mv jre1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /jre && \
     rm /jre/bin/jjs && \
     rm /jre/bin/keytool && \
     rm /jre/bin/orbd && \
