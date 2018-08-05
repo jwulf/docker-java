@@ -12,8 +12,7 @@ ENV JAVA_VERSION_MAJOR=8  \
 # about nsswitch.conf - see https://registry.hub.docker.com/u/frolvlad/alpine-oraclejdk8/dockerfile/
 COPY glibc-2.21-r2.apk /tmp/glibc-2.21-r2.apk
 COPY glibc-bin-2.21-r2.apk /tmp/glibc-bin-2.21-r2.apk
-
-RUN 
+ 
 RUN apk add --update curl ca-certificates && \
     cd /tmp && \
     apk add --allow-untrusted \
